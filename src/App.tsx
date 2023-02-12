@@ -3,14 +3,26 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './screens/Home';
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  Home: {
+    folderId: string;
+  };
+};
+
+const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home} />
-      </Stack.Navigator>
+      <RootStack.Navigator
+        screenOptions={{animation: 'slide_from_right'}}
+        initialRouteName="Home">
+        <RootStack.Screen
+          name="Home"
+          component={Home}
+          initialParams={{folderId: 'root'}}
+        />
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 };

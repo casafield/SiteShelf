@@ -1,8 +1,22 @@
 import React from 'react';
-import SiteList from '@components/SiteList';
+import mockData from '../mockdata';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from 'App';
+import {SafeAreaView} from 'react-native';
+import HomeListItem from '@components/HomeListItem';
 
-const Home = () => {
-  return <SiteList />;
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+
+const Home: React.FC<Props> = ({navigation, route}: Props) => {
+  return (
+    <SafeAreaView>
+      {mockData
+        .filter(data => data.parentFolder === route.params.folderId)
+        .map(data => (
+          <HomeListItem navigation={navigation} data={data} key={data.id} />
+        ))}
+    </SafeAreaView>
+  );
 };
 
 export default Home;
