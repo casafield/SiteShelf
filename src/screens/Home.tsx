@@ -11,7 +11,7 @@ const Home: React.FC<Props> = ({navigation, route}: Props) => {
   return (
     <SafeAreaView>
       {mockData
-        .filter(data => data.parentFolder === route.params.folderId)
+        .filter(data => data.parent_folder === route.params.folderId)
         .map(data => (
           <HomeListItem navigation={navigation} data={data} key={data.id} />
         ))}

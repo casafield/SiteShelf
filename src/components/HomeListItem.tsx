@@ -7,10 +7,10 @@ import {Linking, StyleSheet} from 'react-native';
 
 type Data = {
   id: string;
-  title: string;
+  name: string;
   url: string;
-  itemType: string;
-  parentFolder: string;
+  item_type: string;
+  parent_folder: string;
 };
 
 type ListItemProps = {
@@ -28,7 +28,7 @@ type LinkItemProps = {
 };
 
 const HomeListItem = ({navigation, data}: ListItemProps) => {
-  if (data.itemType === 'folder') {
+  if (data.item_type === 'folder') {
     return <FolderItem navigation={navigation} data={data} />;
   } else {
     return <LinkItem data={data} />;
@@ -44,7 +44,7 @@ const FolderItem = ({navigation, data}: FolderItemProps) => {
         containerStyle={styles.avater}
       />
       <ListItem.Content>
-        <ListItem.Title>{data.title}</ListItem.Title>
+        <ListItem.Title>{data.name}</ListItem.Title>
       </ListItem.Content>
     </ListItem>
   );
@@ -64,7 +64,7 @@ const LinkItem = ({data}: LinkItemProps) => {
       />
       <ListItem.Content>
         <ListItem.Title numberOfLines={1} ellipsizeMode="tail">
-          {data.title}
+          {data.name}
         </ListItem.Title>
         <ListItem.Subtitle>{data.url}</ListItem.Subtitle>
       </ListItem.Content>
