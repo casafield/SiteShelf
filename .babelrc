@@ -1,12 +1,20 @@
 {
   "plugins": [
     [
+      "module:react-native-dotenv",{
+        "envName": "APP_ENV",
+        "moduleName": "@env",
+        "path": ".env"
+      }
+    ],
+    [
       "module-resolver",
       {
         "root": ["."],
         "alias": {
           "@components": "./src/components",
-          "@atoms": "./src/atoms"
+          "@atoms": "./src/atoms",
+          "@repositories": "./src/repositories"
         }
       }
     ]

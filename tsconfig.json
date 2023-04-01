@@ -7,8 +7,11 @@
     "paths": {
       "*": ["src/*"],
       "@components/*": ["src/components/*"],
-      "@atoms/*": ["src/atoms/*"]
+      "@atoms/*": ["src/atoms/*"],
+      "@repositories/*": ["src/repositories/*"],
     },
+
+    "typeRoots": ["./src/types"],
 
     /* Completeness */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
