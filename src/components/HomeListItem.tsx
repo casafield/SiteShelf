@@ -37,7 +37,9 @@ const HomeListItem = ({navigation, data}: ListItemProps) => {
 
 const FolderItem = ({navigation, data}: FolderItemProps) => {
   return (
-    <ListItem onPress={() => openFolder({navigation, data})}>
+    <ListItem
+      onPress={() => openFolder({navigation, data})}
+      containerStyle={styles.listItem}>
       <Avatar
         rounded
         icon={{name: 'folder', type: 'material'}}
@@ -51,12 +53,14 @@ const FolderItem = ({navigation, data}: FolderItemProps) => {
 };
 
 const openFolder = ({navigation, data}: FolderItemProps) => {
-  navigation.push('Home', {folderId: data.id});
+  navigation.push('Home', {folderId: data.id, folderName: data.name});
 };
 
 const LinkItem = ({data}: LinkItemProps) => {
   return (
-    <ListItem onPress={() => openURL(data.url)}>
+    <ListItem
+      onPress={() => openURL(data.url)}
+      containerStyle={styles.listItem}>
       <Avatar
         rounded
         icon={{name: 'star', type: 'material'}}
@@ -66,7 +70,9 @@ const LinkItem = ({data}: LinkItemProps) => {
         <ListItem.Title numberOfLines={1} ellipsizeMode="tail">
           {data.name}
         </ListItem.Title>
-        <ListItem.Subtitle>{data.url}</ListItem.Subtitle>
+        <ListItem.Subtitle numberOfLines={1} ellipsizeMode="tail">
+          {data.url}
+        </ListItem.Subtitle>
       </ListItem.Content>
     </ListItem>
   );
@@ -77,6 +83,10 @@ const openURL = (url: string) => {
 };
 
 const styles = StyleSheet.create({
+  listItem: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#dddddd',
+  },
   avater: {
     backgroundColor: '#BDBDBD',
   },
